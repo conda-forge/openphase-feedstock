@@ -1,11 +1,11 @@
-About openphase
-===============
+About openphase-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/openphase-feedstock/blob/main/LICENSE.txt)
 
 Home: https://openphase.rub.de/
 
 Package license: GPL-3.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/openphase-feedstock/blob/main/LICENSE.txt)
 
 Summary: OpenPhase is based on the multi-phase-field model as developed by Steinbach and his co-workers
 
