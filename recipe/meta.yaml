@@ -1,5 +1,5 @@
 {% set name = "openphase" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 {% set versionstr = version.replace('.', '_') %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://openphase.rub.de/assets/download/OpenPhase-V{{ versionstr }}.zip
-  sha256: 479b303d563b0c12446c254e326a7cc6d932d4d9f94a28cba6192ee176dda6dc
+  sha256: f91923947afcff4e6b41073954ddc782734ccbfed258985b2f16828f90fa9f8c
   patches:
     - make.patch
 
