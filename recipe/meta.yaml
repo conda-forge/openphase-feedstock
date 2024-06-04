@@ -24,10 +24,8 @@ requirements:
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
   host:
-    - fftw * *{{ mpi }}*
+    - fftw * mpi_{{ mpi }}*
     - {{ mpi }}
-  run:
-    - fftw * *{{ mpi }}*
 
 test:
   commands:
