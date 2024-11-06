@@ -13,20 +13,19 @@ source:
     - make.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
 
 requirements:
   build:
     - make
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
   host:
-    - fftw * *{{ mpi }}*
+    - fftw * mpi_{{ mpi }}*
     - {{ mpi }}
-  run:
-    - fftw * *{{ mpi }}*
 
 test:
   commands:
