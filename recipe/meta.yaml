@@ -1,13 +1,13 @@
 {% set name = "openphase" %}
-{% set version = "2.0" %}
+{% set version = "2.1" %}
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: https://github.com/ICAMS/OpenPhase/archive/Release/{{ version }}.tar.gz
-  sha256: 10d738d6cf2942e599f87c3f12c9c653cef681cb13eabb81461fe1d372f5160d
+  sha256: 4c765d576550dc56b84ac76061ecbcbc98e74b9608840d1489a523f22f014583
 
 build:
   number: 0
