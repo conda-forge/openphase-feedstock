@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/ICAMS/OpenPhase/archive/Release/{{ version }}.tar.gz
-  sha256: 36b435e6207cb35595ff9578fb5bccba8081d81cb7be00ca6233c81b9605cc47
+  sha256: 4c765d576550dc56b84ac76061ecbcbc98e74b9608840d1489a523f22f014583
 
 build:
   number: 0
