@@ -15,16 +15,17 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
     - cmake
     - make  # [unix]
-    - pybind11
   host:
     - fftw
     - python
+    - pybind11
   run:
     - fftw
     - python
