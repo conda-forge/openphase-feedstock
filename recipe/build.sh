@@ -16,15 +16,15 @@ ${CXX} -O3 -fPIC -c -o ${SRC_DIR}/external/miniz.o ${SRC_DIR}/external/miniz.c
 ${CXX} -O3 -fPIC -c -o ${SRC_DIR}/external/WinBase64/libbase64.o ${SRC_DIR}/external/WinBase64/base64.cpp
 
 # Build Python bindings
-cd ${SRC_DIR}/pythonbindings
-EXT_SUFFIX=$(python3-config --extension-suffix)
-${CXX} -O3 -Wall -shared -fopenmp -std=c++17 -fPIC \
-  $(python3 -m pybind11 --includes) \
+cd "${SRC_DIR}/pythonbindings"
+EXT_SUFFIX=$(${PYTHON} -c "import sysconfig; print(sysconfig.get_config_var('EXT_SUFFIX') or sysconfig.get_config_var('SO'))")
+${CXX} ${CXXFLAGS} ${CPPFLAGS} -Wall -shared -fopenmp -std=c++17 -fPIC \
+  $(${PYTHON} -m pybind11 --includes) \
   OpenPhase.cpp \
-  -o OpenPhase${EXT_SUFFIX} \
+  -o "OpenPhase${EXT_SUFFIX}" \
   -I../external -I../external/WinBase64 -I../include \
-  -L${PREFIX}/lib -lOpenPhase \
+  -L"${PREFIX}/lib" -lOpenPhase \
   ../external/miniz.o ../external/WinBase64/libbase64.o \
-  -Wl,-rpath,${PREFIX}/lib
+  ${LDFLAGS}
 
 cp OpenPhase${EXT_SUFFIX} ${SP_DIR}/
