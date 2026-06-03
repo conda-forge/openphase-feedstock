@@ -21,14 +21,18 @@ requirements:
     - libgomp      # [linux]
     - cmake
     - make  # [unix]
+    - pybind11
   host:
     - fftw
+    - python
   run:
     - fftw
+    - python
 
 test:
+  imports:
+    - OpenPhase
   commands:
-    # adapt to an actual installed binary or library
     - test -f $PREFIX/bin/openphase || test -f $PREFIX/lib/libOpenPhase.so  # [unix]
 
 about:
