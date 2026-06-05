@@ -10,11 +10,12 @@ source:
   sha256: 4c765d576550dc56b84ac76061ecbcbc98e74b9608840d1489a523f22f014583
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
     - llvm-openmp  # [osx]
@@ -23,12 +24,16 @@ requirements:
     - make  # [unix]
   host:
     - fftw
+    - python
+    - pybind11
   run:
     - fftw
+    - python
 
 test:
+  imports:
+    - OpenPhase
   commands:
-    # adapt to an actual installed binary or library
     - test -f $PREFIX/bin/openphase || test -f $PREFIX/lib/libOpenPhase.so  # [unix]
 
 about:
