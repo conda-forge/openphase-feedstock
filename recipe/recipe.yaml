@@ -1,0 +1,60 @@
+schema_version: 1
+
+context:
+  name: openphase
+  version: "2.1"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/ICAMS/OpenPhase/archive/Release/${{ version }}.tar.gz
+  sha256: 4c765d576550dc56b84ac76061ecbcbc98e74b9608840d1489a523f22f014583
+
+build:
+  number: 3
+  skip: not linux
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib('c') }}
+    - if: osx
+      then: llvm-openmp
+    - if: linux
+      then: libgomp
+    - cmake
+    - if: unix
+      then: make
+  host:
+    - fftw
+    - python
+    - pybind11
+  run:
+    - fftw
+    - python
+
+tests:
+  - python:
+      imports:
+        - OpenPhase
+      pip_check: false
+  - script:
+      - if: unix
+        then: test -f $PREFIX/bin/openphase || test -f $PREFIX/lib/libOpenPhase.so
+
+about:
+  summary: High-performance phase-field simulation framework for materials science
+  description: |
+    OpenPhase is a modular, high-performance phase-field simulation framework
+    for modeling microstructure evolution in materials science.
+  license: GPL-3.0-only
+  license_file: LICENSE
+  homepage: https://github.com/ICAMS/OpenPhase
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
+    - samwaseda
